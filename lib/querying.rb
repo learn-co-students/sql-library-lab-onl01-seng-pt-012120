@@ -8,17 +8,17 @@ end
 
 
 def select_value_and_count_of_most_prolific_species
-  "SELECT VALUE = ?, COUNT FROM characters ORDER BY COUNT(MAX) DESC LIMIT 1"
+  "SELECT species, COUNT(*) FROM characters GROUP BY species ORDER BY COUNT(species) DESC LIMIT 1"
 end
 
 def select_name_and_series_subgenres_of_authors
-  "Write your SQL query here"
+  "SELECT authors.name, subgenres.name FROM authors INNER JOIN subgenres ON authors.id = subgenres.id"
 end
 
 def select_series_title_with_most_human_characters
-  "Write your SQL query here"
+  "SELECT title FROM series INNER JOIN characters ON characters.id = series.id GROUP BY title ORDER BY COUNT(title) DESC LIMIT 1"
 end
 
 def select_character_names_and_number_of_books_they_are_in
-  "Write your SQL query here"
+  "SELECT characters.name, COUNT(*) FROM character_books INNER JOIN characters ON character_books.character_id = characters.id GROUP BY characters.name ORDER BY COUNT(book_id) DESC"
 end
